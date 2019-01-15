@@ -11,6 +11,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./xserver.nix
+      ./bash.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
