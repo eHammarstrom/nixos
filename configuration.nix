@@ -40,6 +40,9 @@
   ];
 
   # List services that you want to enable:
+  
+  # Enable the one true service
+  services.emacs.enable = true;
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;

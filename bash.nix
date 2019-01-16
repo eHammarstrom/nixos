@@ -2,6 +2,7 @@
 
 {
   programs.bash.shellAliases = {
+    ema = "emacsclient -c";
     gs = "git status";
     gct = "git commit";
     gad = "git add";
