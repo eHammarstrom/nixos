@@ -5,6 +5,7 @@
     ema = "emacsclient -c";
     emat = "emacsclient -t";
     gs = "git status";
+    gp = "git push";
     gct = "git commit";
     gad = "git add";
     gdf = "git diff";
