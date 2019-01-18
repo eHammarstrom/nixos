@@ -39,8 +39,10 @@
     wget curl vim emacs git
   ];
 
+  environment.variables.EDITOR = "emacs";
+
   # List services that you want to enable:
-  
+
   # Enable the one true service
   services.emacs.enable = true;
 
@@ -58,7 +60,16 @@
 
   # Enable sound.
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio = {
+    enable = true;
+    support32Bit = true;
+
+    daemon.config = {
+      default-sample-format = "s24ne";
+      default-sample-rate = "192000";
+      alternate-sample-rate = "96000";
+    };
+  };
 
   # Nvidia 32bit support
   hardware.opengl.driSupport32Bit = true;
