@@ -4,7 +4,11 @@
 
 { config, pkgs, ... }:
 
-{
+let
+  hemacs = (pkgs.emacs.override {}).overrideAttrs (old: {
+    nativeBuildInputs = (old.nativeBuildInputs or []) ++ [ pkgs.haskellPackages.cabal-install ];
+  });
+in {
   nixpkgs.config.allowUnfree = true;
 
   imports =
@@ -36,15 +40,26 @@
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
-    wget curl vim emacs git
+    wget curl vim
+    git cabal-install
+    cabal2nix ghc clang
+    gcc hexchat zip
+    unzip discord alacritty
   ];
 
-  environment.variables.EDITOR = "emacs";
+  fonts.fonts = with pkgs; [
+    hasklig
+    fira-code
+    fira-code-symbols
+    hack-font
+  ];
 
   # List services that you want to enable:
 
   # Enable the one true service
   services.emacs.enable = true;
+  services.emacs.defaultEditor = true;
+  services.emacs.package = hemacs;
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
