@@ -47,6 +47,8 @@ in {
     unzip discord alacritty
   ];
 
+  environment.variables = { PATH = "/home/estrom/.cargo/bin"; };
+
   fonts.fonts = with pkgs; [
     hasklig
     fira-code
